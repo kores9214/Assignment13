@@ -1,0 +1,138 @@
+<div class="col-md-7">
+  <img src="assets/img/images.jpeg">
+</div>
+<p>
+  Please fill out the following form with your complaint. We will review
+  your request and follow up with you as soon aspossible.
+</p>
+<br/>
+<div class="row">
+  <div class="col-md-5">
+    <form [formGroup]="this.studentService.form" (ngSubmit)="onSubmit()">
+      <label for="name">Name</label>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <input formControlName="firstName" class="form-control"
+          [ngClass]="{'is-invalid':submitted && 
+                      formControls.firstName.errors}">
+          <div class="invalid feedback" *ngIf="submitted && 
+                      formControls.firstName.errors">
+            <label class="invalid feedback" 
+              *ngIf="formControls.firstName.errors.required">
+              Please Enter Student name
+            </label>
+            <label class="invalid feedback" 
+              *ngIf="formControls.firstName.errors.minlength">
+             Please enter name minimum 5 character.
+            </label>
+          </div>
+            <label for="firstName">First Name</label>
+        </div>  
+        <div class="col-md-6">
+          <input formControlName="lastName" class="form-control"
+          [ngClass]="{'is-invalid':submitted && 
+                      formControls.lastName.errors}">
+
+          <div class="invalid feedback" *ngIf="submitted && 
+                      formControls.lastName.errors">
+            <label class="invalid feedback" 
+              *ngIf="formControls.lastName.errors.required">
+              Please Enter Last name
+            </label>
+            <label class="invalid feedback" 
+              *ngIf="formControls.lastName.errors.minlength">
+             Please enter name minimum 5 character.
+            </label>
+          </div>
+          <label for="lastName">Last Name</label>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+      <label>Email Address</label>
+      <input formControlName="email" class="form-control" 
+            [ngClass]="{'is-invalid':submitted && 
+                        formControls.email.errors}">
+      
+      <div class="invalid-feedback" *ngIf="submitted && 
+                                      formControls.email.errors">
+        Invalid email address.
+      </div>
+    </div>
+    
+    <!-- Mobile -->
+    <div class="form-group">
+      <label>Mobile Number</label>
+      <input formControlName="mobile" class="form-control" 
+            [ngClass]="{'is-invalid':submitted && 
+                        formControls.mobile.errors}">
+      <div class="invalid-feedback" *ngIf="submitted && 
+                                          formControls.mobile.errors">
+        <label *ngIf="formControls.mobile.errors.required">
+          Mobile number is Compulsorry for further communication. 
+          You will receive messages from Marvellous Innfosystems.
+        </label>
+        <label *ngIf="formControls.mobile.errors.minlength">
+          Invalid Mobile Number</label>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label>Address</label>
+      <input formControlName="address" class="form-control">
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <input formControlName="city" class="form-control"
+        [ngClass]="{'is-invalid':submitted && 
+                    formControls.city.errors}">
+        <div class="invalid feedback" *ngIf="submitted && 
+                    formControls.city.errors">
+          <label class="invalid feedback" 
+            *ngIf="formControls.city.errors.required">
+            Please Enter City name
+          </label>
+
+          <label class="invalid feedback" 
+            *ngIf="formControls.city.errors.minlength">
+              Please enter city name minimum 5 character.
+          </label>
+
+        </div>
+        <label for="city">City</label>
+      </div>
+      <div class="col-md-4">
+        <select class="custom-select" name="state">
+          <option selected>Select state</option>
+          <option *ngFor="let state of states">{{state}}</option>     
+        </select>
+        <label>State</label>
+      </div>
+
+      <div class="col-md-2">
+        <input formControlName="zip" class="form-control"
+        [ngClass]="{'is-invalid':submitted && 
+                    formControls.zip.errors}">
+        <div class="invalid feedback" *ngIf="submitted && 
+                    formControls.zip.errors">
+          <label class="invalid feedback" 
+            *ngIf="formControls.zip.errors.required">
+            Please Enter Zipcode
+          </label>
+        </div>
+        <label>Zip</label>
+      </div>
+    </div>
+    <label>
+      Please describe the incident you would like to report.
+    </label>
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </div>
+
+  </form>
+  </div>
+</div>
